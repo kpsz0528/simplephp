@@ -35,8 +35,9 @@
       shell: "git clone https://github.com/kpsz0528/simplephp.git"
 
     - name: mv index
-      shell: "mv -f ./simplephp/* /var/www/html/"
-
+      shell: "mv -f ./simplephp/index.php /var/www/html/"
+    - name: mv php
+      shell: "mv -f ./simplephp/signup_action.php /var/www/html/"
     - name: start httpd
       service:
         name: httpd
