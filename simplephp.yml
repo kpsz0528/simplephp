@@ -9,6 +9,9 @@
         name: httpd
         state: present
 
+    - name: release php7.3
+      shell: "sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2"
+
     - name: config httpd to php
       template:
         src: httpd.conf.j2
@@ -21,6 +24,11 @@
 
     - name: install php all
       shell: "sudo yum -y install php-cli php-common php-gd php-mbstring php-mysqlnd php-pdo php-fpm php-xml php-opcache php-zip php-bcmath"
+
+    - name: install mariadb
+      yum:
+        name: mariadb
+        state: present
 
     - name: install php-mysql
       yum:
@@ -49,5 +57,5 @@
     - name: start and enable httpd
       service:
         name: httpd
-        state: started
+        state: restarted
         enabled: true
