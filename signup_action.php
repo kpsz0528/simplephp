@@ -1,7 +1,7 @@
 <?php $name=$_POST['name'];
 $email=$_POST['email'];
 $num=$_POST['num'];
-$con = mysqli_connect("localhost","root","test123","hi") or die ("Can't access DB");
+$con = mysqli_connect("simplephpdb.cmthtyekrgzh.ap-northeast-2.rds.amazonaws.com","root","test1234","hi") or die ("Can't access DB");
 $query = "insert into exam (name,email,num) values('".$name."','".$email."','".$num."')";
 $resut=mysqli_query($con,$query);
 if(!$result) 
