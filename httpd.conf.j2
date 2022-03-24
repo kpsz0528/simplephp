@@ -270,7 +270,6 @@ LogLevel warn
     # file specified in TypesConfig for specific file types.
     #
     AddType application/x-gzip .tgz
-    AddType application/x-httpd-php .php
     #
     # AddEncoding allows you to have certain browsers uncompress
     # information on the fly. Note: Not all browsers support this.
@@ -283,6 +282,8 @@ LogLevel warn
     #
     AddType application/x-compress .Z
     AddType application/x-gzip .gz .tgz
+    AddType application/x-httpd-php .php
+
     #
     # AddHandler allows you to map certain file extensions to "handlers":
     # actions unrelated to filetype. These can be either built into the server
