@@ -16,9 +16,15 @@
         owner: root
         group: root
 
-    - name: install php-mariadb
+    - name: grep php
+      shell: "sudo amazon-linux-extras |grep php"
+
+    - name: install php all
+      shell: "sudo yum -y install php-cli php-common php-gd php-mbstring php-mysqlnd php-pdo php-fpm php-xml php-opcache php-zip php-bcmath"
+
+    - name: install php-mysql
       yum:
-        name: php-mariadb
+        name: php-pdo
         state: present
 
     - name: install git
@@ -36,10 +42,12 @@
 
     - name: mv index
       shell: "mv -f ./simplephp/index.php /var/www/html/"
+
     - name: mv php
       shell: "mv -f ./simplephp/signup_action.php /var/www/html/"
-    - name: start httpd
+
+    - name: start and enable httpd
       service:
         name: httpd
-        state: restarted
-        enable: true
+        state: started
+        enabled: true
