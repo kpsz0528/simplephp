@@ -1,0 +1,44 @@
+---
+- name: simplephp
+  hosts: node
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: install httpd
+      yum:
+        name: httpd
+        state: present
+
+    - name: config httpd to php
+      template:
+        src: httpd.conf.j2
+        dest: /etc/httpd/conf/httpd.conf
+        owner: root
+        group: root
+
+    - name: install php-mariadb
+      yum:
+        name: php-mariadb
+        state: present
+
+    - name: install git
+      yum:
+        name: git
+        state: present
+
+    - name: remove file
+      shell: "rm -rf simplephp"
+      args:
+        warn: no
+
+    - name: get html
+      shell: "git clone https://github.com/kpsz0528/simplephp.git"
+
+    - name: mv index
+      shell: "mv -f ./simplephp/* /var/www/html/"
+
+    - name: start httpd
+      service:
+        name: httpd
+        state: restarted
+        enable: true
