@@ -6,7 +6,7 @@
     </head>
     
     <body>
-        hello~~
+        <h1> This is prject!! </h1>
         <form method="post" action="./signup_action.php">
             <label>이름 <input type="text" name='name'> </label><br>
             <label>이메일 <input type="email" name='email'> </label><br>
